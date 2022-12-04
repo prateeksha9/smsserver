@@ -21,7 +21,7 @@ app.get('/send-text', (req, res) => {
     .create({
       body: textmessage,
       to: '+91' + recipient,
-      from: '+18647277013,
+      from: '+18647277013',
     })
     .then((message) => console.log(message.body));
 });
