@@ -3,8 +3,8 @@ const cors = require('cors');
 const twilio = require('twilio');
 const port = process.env.PORT || 3000;
 
-const accountSid = 'ACa50ed6342f695fa378936ad4d13afc51';
-const authToken = '141b3642ac3768112c032e53a5bc3809';
+const accountSid = process.env.accountSid;
+const authToken = process.env.authToken;
 const client = new twilio(accountSid, authToken);
 
 const app = express();
@@ -21,7 +21,7 @@ app.get('/send-text', (req, res) => {
     .create({
       body: textmessage,
       to: '+91' + recipient,
-      from: '+18647277013',
+      from: `${process.env.twilioNumber}`,
     })
     .then((message) => console.log(message.body));
 });
